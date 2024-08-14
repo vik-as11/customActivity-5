@@ -1,0 +1,20 @@
+{
+    "name": "custom-activity",
+    "version": "1.0.0",
+    "description": "A custom marketing activity management application",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "express": "^4.19.2",
+        "mongoose": "^5.12.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    },
+    "author": "vikas",
+    "license": "ISC"
+}

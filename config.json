@@ -1,0 +1,64 @@
+{
+    "workflowApiVersion": "1.1",
+    "metaData": {
+      "icon": "images/icon.png",
+      "iconSmall": "images/iconSmall.png"
+    },
+    "type": "REST",
+    "lang": {
+      "en-US": {
+        "name": "Custom Marketing Activity",
+        "description": "A custom activity for Salesforce Marketing Cloud"
+      }
+    },
+    "arguments": {
+      "execute": {
+        "inArguments": [],
+        "outArguments": [],
+        "url": "https://your-heroku-app.herokuapp.com/execute",
+        "verb": "POST",
+        "body": "",
+        "header": "",
+        "format": "json",
+        "useJwt": true,
+        "timeout": 10000
+      }
+    },
+    "configurationArguments": {
+      "save": {
+        "url": "https://your-heroku-app.herokuapp.com/save",
+        "verb": "POST",
+        "useJwt": true
+      },
+      "publish": {
+        "url": "https://your-heroku-app.herokuapp.com/publish",
+        "verb": "POST",
+        "useJwt": true
+      },
+      "validate": {
+        "url": "https://your-heroku-app.herokuapp.com/validate",
+        "verb": "POST",
+        "useJwt": true
+      },
+      "stop": {
+        "url": "https://your-heroku-app.herokuapp.com/stop",
+        "verb": "POST",
+        "useJwt": true
+      }
+    },
+    "userInterfaces": {
+      "configModal": {
+        "height": 400,
+        "width": 1000,
+        "fullscreen": false
+      }
+    },
+    "schema": {
+      "arguments": {
+        "execute": {
+          "inArguments": [],
+          "outArguments": []
+        }
+      }
+    }
+  }
