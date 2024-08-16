@@ -1,14 +1,18 @@
-define([
+require.config({
+    paths: {
+        postmonger: 'https://cdnjs.cloudflare.com/ajax/libs/postmonger/1.0.15/postmonger.min'
+    }
+});
+
+require([
     'postmonger'
-], function(
-    Postmonger
-) {
+], function (Postmonger) {
     'use strict';
 
     var connection = new Postmonger.Session();
     var payload = {};
     var lastStepEnabled = false;
-    var steps = [ 
+    var steps = [
         { "label": "Step 1", "key": "step1" }
     ];
     var currentStep = steps[0].key;
@@ -32,7 +36,7 @@ define([
         if (data) {
             payload = data;
         }
-        
+
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -42,8 +46,8 @@ define([
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-        $.each(inArguments, function(index, inArgument) {
-            $.each(inArgument, function(key, val) {
+        $.each(inArguments, function (index, inArgument) {
+            $.each(inArgument, function (key, val) {
                 if (key === 'activityName') {
                     $('#activity-name').val(val);
                 }
