@@ -1,4 +1,5 @@
-window.config = {
+module.exports = function configJSON(req) {
+  return {
     "name": "My Custom Activity",
     "description": "A description of the custom activity",
     "icon": "path/to/icon.png",
