@@ -1,19 +1,46 @@
 {
-    "name": "My Custom Activity",
-    "description": "A description of the custom activity",
-    "icon": "logo.png",
-    "edit": {
-        "url": "https://your-edit-url.com"
-    },
-    "execute": {
-        "url": "https://your-execute-url.com"
-    },
-    "schema": {
-        "arguments": {
-            "execute": {
-                "inArguments": [],
-                "outArguments": []
-            }
-        }
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "public/logo.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "My Custom Activity",
+      "description": "A description of the custom activity"
     }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [],
+      "outArguments": []
+    }
+  },
+  "configurationArguments": {
+    "save": {
+      "url": "https://your-endpoint.com/save"
+    },
+    "publish": {
+      "url": "https://your-endpoint.com/publish"
+    },
+    "validate": {
+      "url": "https://your-endpoint.com/validate"
+    }
+  },
+  "edit": {
+    "url": "https://your-endpoint.com/edit",
+    "height": 400,
+    "width": 500
+  },
+  "outcomes": [
+    {
+      "arguments": {},
+      "metaData": {
+        "label": "Confirmed"
+      },
+      "name": "confirmed",
+      "next": "nextActivity"
+    }
+  ]
 }
