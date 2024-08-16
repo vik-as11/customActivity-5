@@ -28,6 +28,13 @@
       "url": "https://your-endpoint.com/validate"
     }
   },
+  "userInterfaces": {
+    "configModal": {
+        "url": "https://your-server-url/config",
+        "height": 400,
+        "width": 400
+    }
+},
   "edit": {
     "url": "https://custom-activity-5.vercel.app",
     "height": 400,
