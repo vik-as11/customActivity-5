@@ -1,7 +1,7 @@
 {
   "workflowApiVersion": "1.1",
   "metaData": {
-    "icon": "logo.png",
+    "icon": "https://rethink.industries/wp-content/uploads/2022/02/talkdesk-logo-1-1024x1024-400x400.png",
     "category": "message"
   },
   "type": "REST",
