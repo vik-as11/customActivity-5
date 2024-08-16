@@ -1,6 +1,6 @@
 require.config({
     paths: {
-        postmonger: 'https://raw.githubusercontent.com/kevinparkerson/postmonger/master/postmonger.min'
+        postmonger: 'https://raw.githubusercontent.com/kevinparkerson/postmonger/master/postmonger.min.js'
     }
 });
 
