@@ -1,6 +1,6 @@
 require.config({
     paths: {
-        postmonger: 'https://cdnjs.cloudflare.com/ajax/libs/postmonger/1.0.15/postmonger.min'
+        postmonger: 'https://raw.githubusercontent.com/kevinparkerson/postmonger/master/postmonger.min'
     }
 });
 
