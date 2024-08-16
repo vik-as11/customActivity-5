@@ -1,4 +1,4 @@
-module.exports = {
+window.config = {
     "name": "My Custom Activity",
     "description": "A description of the custom activity",
     "icon": "path/to/icon.png",
