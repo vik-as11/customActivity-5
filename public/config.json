@@ -29,7 +29,7 @@
     }
   },
   "edit": {
-    "url": "https://your-endpoint.com/edit",
+    "url": "https://custom-activity-5.vercel.app",
     "height": 400,
     "width": 500
   },
