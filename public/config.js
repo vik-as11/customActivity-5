@@ -1,7 +1,7 @@
 window.config = {
     "name": "My Custom Activity",
     "description": "A description of the custom activity",
-    "icon": "path/to/icon.png",
+    "icon": "public/logo.png",
     "edit": {
         "url": "https://your-edit-url.com"
     },
