@@ -7,7 +7,7 @@
   "type": "REST",
   "lang": {
     "en-US": {
-      "name": "My Custom Activity",
+      "name": "Talkdesk SMS",
       "description": "A description of the custom activity"
     }
   },
