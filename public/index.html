@@ -23,30 +23,25 @@
 </head>
 <body>
 <div class="card">
-  
-  <form class="form">
-    <div class="group">
-    <input placeholder="‎" type="text" required="">
-    <label for="name">Name</label>
-    </div>
-      <div class="group">
-    <input placeholder="‎" type="text" id="phone" name="number" required="">
-    <label for="Phone">Phone</label>
-    </div>
-<div class="group">
-    <input placeholder="‎" type="email" id="email" name="email" required="">
-    <label for="email">Email</label>
-    </div>
-<div class="group">
-    <textarea placeholder="‎" id="comment" name="comment" rows="5" required=""></textarea>
-    <label for="comment">SMS Content</label>
+    <form class="form" id="custom-form">
+        <div class="group">
+            <input placeholder="‎" type="text" id="name" required="">
+            <label for="name">Name</label>
+        </div>
+        <div class="group">
+            <input placeholder="‎" type="text" id="phone" name="number" required="">
+            <label for="phone">Phone</label>
+        </div>
+        <div class="group">
+            <input placeholder="‎" type="email" id="email" name="email" required="">
+            <label for="email">Email</label>
+        </div>
+        <div class="group">
+            <textarea placeholder="‎" id="comment" name="comment" rows="5" required=""></textarea>
+            <label for="comment">SMS Content</label>
+        </div>
+        <button type="button" id="submit-button">Submit</button>
+    </form>
 </div>
-  <!--<button type="submit">Submit</button> -->
-  </form>
-</div>
-
-
-
-    
 </body>
 </html>
