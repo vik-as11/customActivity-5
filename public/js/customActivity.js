@@ -88,15 +88,16 @@ define([
     }
 
     function saveAndMakeApiCall() {
-        var name = $('#name').val();
-        var phone = $('#phone').val();
-        var email = $('#email').val();
-        var comment = $('#comment').val();
+    var name = document.querySelector('#name').value;
+    var phone = document.querySelector('#phone').value;
+    var email = document.querySelector('#email').value;
+    var comment = document.querySelector('#comment').value;
 
-        if (!name || !phone || !email || !comment) {
-            console.error('Error: Missing form values');
-            return;
-        }
+    // Check if values are retrieved
+    if (!name || !phone || !email || !comment) {
+        console.error('Missing form values');
+        return; // Exit if any value is missing
+    }
 
         payload['arguments'].execute.inArguments = [{
             "name": name,
