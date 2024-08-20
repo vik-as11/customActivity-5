@@ -108,7 +108,7 @@ define([
        
         // Making the API Call
         var apiRequestBody = {
-            "touchpoint_id": "14387955919",
+            "touchpoint_id": name,
             "subject": "This is the subject I need to talk about",
             "contact_person": {
               "email": email
@@ -121,7 +121,7 @@ define([
                                    }
           }
 
-        console.log('API Request Body:',  json.stringify(apiRequestBody));
+        console.log('API Request Body:',  apiRequestBody);
 
         fetch('https://api.talkdeskappca.com/digital-connect/conversations', {  // Replace with your actual API endpoint
             method: 'POST',
