@@ -91,29 +91,31 @@ define([
         return 'idempotency-key-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
     }
 
-    function saveAndMakeApiCall() {
-        var activityName = $('#activity-name').val();
-        var activityDescription = $('#activity-description').val();
+    function saveAndMakeApiCall() {var name = $('#name').val();
+        var phone = $('#phone').val();
+        var email = $('#email').val();
+        var comment = $('#comment').val();
 
         payload['arguments'].execute.inArguments = [{
-            "activityName": activityName,
-            "activityDescription": activityDescription,
-            "tokens": tokens,
-            "endpoints": endpoints
+            "name": name,
+            "phone": phone,
+            "email": email,
+            "comment": comment
         }];
-        console.log('payload',payload);
+
         payload['metaData'].isConfigured = true;
 
+       
         // Making the API Call
         var apiRequestBody = {
             "touchpoint_id": "14387955919",
             "subject": "This is the subject I need to talk about",
             "contact_person": {
-              "email": "vikas.kumawat@virtuowhiz.com"
+              "email": email
             },
              "context_parameters": {
-                                   "contact_name": "vikas",
-                                    "contact_phone": "+918955445857",
+                                   "contact_name": name,
+                                    "contact_phone": phone,
                                     "contact_reason": "consulting products",
                                     "website_location": "http://location.com"
                                    }
