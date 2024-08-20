@@ -88,11 +88,10 @@ define([
     }
 
     function saveAndMakeApiCall() {
-    var name = document.querySelector('name').value;
-    var phone = document.querySelector('#phone').value;
-    var email = document.querySelector('#email').value;
-    var comment = document.querySelector('#comment').value;
-
+     var name = $('#name').val();
+        var phone = $('#phone').val();
+        var email = $('#email').val();
+        var comment = $('#comment').val();
     // Check if values are retrieved
     if (!name || !phone || !email || !comment) {
         console.error('Missing form values');
