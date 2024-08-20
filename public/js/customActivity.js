@@ -106,11 +106,17 @@ define([
 
         // Making the API Call
         var apiRequestBody = {
-            "touchpoint_id": "+16475591885",
+            "touchpoint_id": "+14387955919",
             "subject": "This is the subject I need to talk about",
             "contact_person": {
               "email": "vikas.kumawat@virtuowhiz.com"
-            }
+            },
+             "context_parameters": {
+                                   "contact_name": "vikas",
+                                    "contact_phone": "+918955445857",
+                                    "contact_reason": "consulting products",
+                                    "website_location": "http://location.com"
+                                   }
           }
 
         console.log('API Request Body:', apiRequestBody);
@@ -119,7 +125,7 @@ define([
             method: 'POST',
              headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer eyJraWQiOiJhNTQyMmRmZTMyN2M1YzE4YTYxYzEzZGU3ZGU1MTk1NCIsImFsZyI6IkVTMjU2In0.eyJpc3MiOiJodHRwczovL3d3dy50YWxrZGVza2lkY2EuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkudGFsa2Rlc2thcHBjYS5jb20iLCJleHAiOjE3MjQxNDE1MDQsIm5iZiI6MTcyNDE0MDkwNCwiaWF0IjoxNzI0MTQwOTA0LCJqdGkiOiI4MDk3MjFjNWFhMzM0NTg1YmNjZjkzM2FjMGI4MTk1ZSIsImNpZCI6IjM3MWVhMTJjYzkwMTRmOWI4OGM3ODE0YjA5ZDIwMDMwIiwiZ3R5IjoiY2xpZW50X2NyZWRlbnRpYWxzIiwic2NwIjpbImFjY291bnQ6cmVhZCIsImFwcHM6d3JpdGUiLCJjb250YWN0czpyZWFkIiwiZGlnaXRhbC1jb25uZWN0OndyaXRlIiwib3BlbmlkIiwicmVjb3JkLWxpc3RzOm1hbmFnZSJdLCJybG0iOiJNQUlOIiwiYWlkIjoiNjJiZTNlY2YxM2M3NTY0Zjc4NjBjMmIwIiwiYWNjIjoibnVvdm8iLCJwc24iOiJDVVNUT01FUiIsInJlZyI6ImNhLWNlbnRyYWwtMSIsInN1YiI6IjM3MWVhMTJjYzkwMTRmOWI4OGM3ODE0YjA5ZDIwMDMwIn0.eddIRLgH2zIWFry6qQDDB2ffimIFTwoLa19Q1INpHEkipLot6VXsmRMUjOxwTDXuF3oLVM4gFMO972s3vfHamw`, // Using the Fuel2 token as a Bearer token
+                'Authorization': `Bearer eyJraWQiOiJhNTQyMmRmZTMyN2M1YzE4YTYxYzEzZGU3ZGU1MTk1NCIsImFsZyI6IkVTMjU2In0.eyJpc3MiOiJodHRwczovL3d3dy50YWxrZGVza2lkY2EuY29tIiwiYXVkIjoiaHR0cHM6Ly9hcGkudGFsa2Rlc2thcHBjYS5jb20iLCJleHAiOjE3MjQxNDI2OTMsIm5iZiI6MTcyNDE0MjA5MywiaWF0IjoxNzI0MTQyMDkzLCJqdGkiOiJjZjYzNzlhNGRmMzk0Njc0OGY4ODExOTA3ZGY3ZTdlNiIsImNpZCI6IjM3MWVhMTJjYzkwMTRmOWI4OGM3ODE0YjA5ZDIwMDMwIiwiZ3R5IjoiY2xpZW50X2NyZWRlbnRpYWxzIiwic2NwIjpbImFjY291bnQ6cmVhZCIsImFwcHM6d3JpdGUiLCJjb250YWN0czpyZWFkIiwiZGlnaXRhbC1jb25uZWN0OndyaXRlIiwib3BlbmlkIiwicmVjb3JkLWxpc3RzOm1hbmFnZSJdLCJybG0iOiJNQUlOIiwiYWlkIjoiNjJiZTNlY2YxM2M3NTY0Zjc4NjBjMmIwIiwiYWNjIjoibnVvdm8iLCJwc24iOiJDVVNUT01FUiIsInJlZyI6ImNhLWNlbnRyYWwtMSIsInN1YiI6IjM3MWVhMTJjYzkwMTRmOWI4OGM3ODE0YjA5ZDIwMDMwIn0.ielUp-_UPfwTYNKZnYKT30m7IlThC0Rk1wRGTvMSemoEBdmCaVkCE0lwizC4NqWH2c-pO0zGfw8zzOdldVxFMA`, // Using the Fuel2 token as a Bearer token
                 'x-idempotency-key': generateIdempotencyKey() // Generating and adding the Idempotency Key
             },
             body: JSON.stringify(apiRequestBody)
