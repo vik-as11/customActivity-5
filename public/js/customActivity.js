@@ -121,7 +121,7 @@ define([
                                    }
           }
 
-        console.log('API Request Body:', apiRequestBody);
+        console.log('API Request Body:',  json.stringify(apiRequestBody));
 
         fetch('https://api.talkdeskappca.com/digital-connect/conversations', {  // Replace with your actual API endpoint
             method: 'POST',
