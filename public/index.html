@@ -41,30 +41,12 @@
     <textarea placeholder="‎" id="comment" name="comment" rows="5" required=""></textarea>
     <label for="comment">SMS Content</label>
 </div>
-  <!--  <button type="submit">Submit</button> -->
+  <button type="submit">Submit</button> 
   </form>
 </div>
 
 
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#confirm-button').click(function() {
-                const payload = {
-                    activityName: $('#activity-name').val(),
-                    activityDescription: $('#activity-description').val(),
-                    mobileNumber: $('#mobile-number').val(),
-                    emailAddress: $('#email-address').val(),
-                    messageContent: $('#message-content').val()
-                };
-
-                // Post data back to the parent window
-                window.parent.postMessage(JSON.stringify({
-                    action: 'setActivityData',
-                    activityData: payload
-                }), '*');
-            });
-        });
-    </script>
+    
 </body>
 </html>

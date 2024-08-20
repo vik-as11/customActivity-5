@@ -1,8 +1,6 @@
 define([
     'postmonger'
-], function(
-    Postmonger
-) {
+], function(Postmonger) {
     'use strict';
 
     var connection = new Postmonger.Session();
@@ -12,6 +10,8 @@ define([
         { "label": "Step 1", "key": "step1" }
     ];
     var currentStep = steps[0].key;
+    var tokens = {};
+    var endpoints = {};
 
     $(window).ready(onRender);
 
@@ -60,16 +60,18 @@ define([
         });
     }
 
-    function onGetTokens(tokens) {
-        console.log(tokens);
+    function onGetTokens(receivedTokens) {
+        tokens = receivedTokens;
+        console.log('Tokens received:', tokens);
     }
 
-    function onGetEndpoints(endpoints) {
-        console.log(endpoints);
+    function onGetEndpoints(receivedEndpoints) {
+        endpoints = receivedEndpoints;
+        console.log('Endpoints received:', endpoints);
     }
 
     function onClickedNext() {
-        save();
+        saveAndMakeApiCall();
     }
 
     function onClickedBack() {
@@ -86,17 +88,46 @@ define([
         $('#' + step).show();
     }
 
-    function save() {
+    function saveAndMakeApiCall() {
         var activityName = $('#activity-name').val();
         var activityDescription = $('#activity-description').val();
 
         payload['arguments'].execute.inArguments = [{
             "activityName": activityName,
-            "activityDescription": activityDescription
+            "activityDescription": activityDescription,
+            "tokens": tokens,
+            "endpoints": endpoints
         }];
-
+        console.log('payload',payload);
         payload['metaData'].isConfigured = true;
 
-        connection.trigger('updateActivity', payload);
+        // Making the API Call
+        var apiRequestBody = {
+            "touchpoint_id": "+918955445857",
+            "subject": "This is the subject I need to talk about",
+            "contact_person": {
+              "email": "vikas.kumawat@virtuowhiz.com"
+            }
+          }
+
+        console.log('API Request Body:', apiRequestBody);
+
+        fetch('https://api.talkdeskappca.com/digital-connect/conversations', {  // Replace with your actual API endpoint
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(apiRequestBody)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('API Response:', data);
+
+            // Update activity with the payload after the API call is successful
+            connection.trigger('updateActivity', payload);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
 });
