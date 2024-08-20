@@ -92,6 +92,7 @@ define([
         var phone = $('#phone').val();
         var email = $('#email').val();
         var comment = $('#comment').val();
+        console.log('data:: ',name,phone,email,comment);
     // Check if values are retrieved
     if (!name || !phone || !email || !comment) {
         console.error('Missing form values');
