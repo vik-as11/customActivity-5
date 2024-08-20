@@ -88,7 +88,7 @@ define([
     }
 
     function saveAndMakeApiCall() {
-    var name = document.querySelector('#name').value;
+    var name = document.querySelector('name').value;
     var phone = document.querySelector('#phone').value;
     var email = document.querySelector('#email').value;
     var comment = document.querySelector('#comment').value;
