@@ -47,16 +47,16 @@
   },
   "configurationArguments": {
     "save": {
-      "url": "https://your-app.com/save"
+      "url": "https://custom-activity-5.vercel.app/"
     },
     "publish": {
-      "url": "https://your-app.com/publish"
+      "url": "https://custom-activity-5.vercel.app/"
     },
     "validate": {
       "url": "https://custom-activity-5.vercel.app/"
     },
     "stop": {
-      "url": "https://your-app.com/stop"
+      "url": "https://custom-activity-5.vercel.app/"
     }
   },
   "wizardSteps": [
