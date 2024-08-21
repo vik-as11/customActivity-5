@@ -13,9 +13,8 @@ define([
     connection.on('initActivity', initialize);
     connection.on('requestedTokens', onGetTokens);
     connection.on('requestedEndpoints', onGetEndpoints);
-    connection.on('clickedNext', onClickedNext);
+    connection.on('clickedNext', saveAndMakeApiCall);
     connection.on('clickedBack', onClickedBack);
-    connection.on('gotoStep', onGotoStep);
 
     function onRender() {
         connection.trigger('ready');
@@ -27,7 +26,7 @@ define([
         if (data) {
             payload = data;
         }
-        
+
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -35,18 +34,29 @@ define([
             payload['arguments'].execute.inArguments.length > 0
         );
 
-        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : [];
 
-        $.each(inArguments, function(index, inArgument) {
-            $.each(inArgument, function(key, val) {
-                if (key === 'activityName') {
-                    $('#name').val(val);
-                }
-                if (key === 'activityDescription') {
-                    $('#description').val(val);
-                }
-            });
+        // Extract the values from inArguments
+        var name = '';
+        var phone = '';
+        var email = '';
+
+        inArguments.forEach(function(inArgument) {
+            if (inArgument.name) {
+                name = inArgument.name;
+            }
+            if (inArgument.phone) {
+                phone = inArgument.phone;
+            }
+            if (inArgument.email) {
+                email = inArgument.email;
+            }
         });
+
+        // Populate the form fields
+        $('#name').val(name);
+        $('#phone').val(phone);
+        $('#email').val(email);
 
         connection.trigger('updateButton', {
             button: 'next',
@@ -57,30 +67,14 @@ define([
 
     function onGetTokens(receivedTokens) {
         tokens = receivedTokens;
-        console.log('Tokens received:', tokens);
     }
 
     function onGetEndpoints(receivedEndpoints) {
         endpoints = receivedEndpoints;
-        console.log('Endpoints received:', endpoints);
-    }
-
-    function onClickedNext() {
-        saveAndMakeApiCall();
     }
 
     function onClickedBack() {
         connection.trigger('prevStep');
-    }
-
-    function onGotoStep(step) {
-        showStep(step);
-        connection.trigger('ready');
-    }
-
-    function showStep(step) {
-        $('.step').hide();
-        $('#' + step).show();
     }
 
     function generateIdempotencyKey() {
@@ -88,29 +82,23 @@ define([
     }
 
     function saveAndMakeApiCall() {
-     var name = $('#name').val();
+        var name = $('#name').val();
         var phone = $('#phone').val();
         var email = $('#email').val();
-        var comment = $('#comment').val();
-        console.log('data:: ',name,phone,email,comment);
-    // Check if values are retrieved
-    if (!name || !phone || !email || !comment) {
-        console.error('Missing form values');
-        return; // Exit if any value is missing
-    }
 
+        // Prepare the payload to be sent back to Journey Builder
         payload['arguments'].execute.inArguments = [{
             "name": name,
             "phone": phone,
-            "email": email,
-            "comment": comment
+            "email": email
         }];
 
         payload['metaData'].isConfigured = true;
 
+        // Making the API Call
         var apiRequestBody = {
-            "touchpoint_id": name,
-            "subject": "This is the subject I need to talk about",
+            "touchpoint_id": name, // Replace this with the correct field from your DE
+            "subject": "This is the subject",
             "contact_person": {
                 "email": email
             },
@@ -122,13 +110,11 @@ define([
             }
         };
 
-        console.log('API Request Body:', apiRequestBody);
-
         fetch('https://api.talkdeskappca.com/digital-connect/conversations', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${tokens.fuel2token}`, // Ensure this token is correctly received
+                'Authorization': `Bearer ${tokens.fuel2token}`, // Using the Fuel2 token as a Bearer token
                 'x-idempotency-key': generateIdempotencyKey()
             },
             body: JSON.stringify(apiRequestBody)
@@ -136,6 +122,8 @@ define([
         .then(response => response.json())
         .then(data => {
             console.log('API Response:', data);
+
+            // Update activity with the payload after the API call is successful
             connection.trigger('updateActivity', payload);
         })
         .catch(error => {
