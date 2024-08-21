@@ -17,17 +17,6 @@
       "outArguments": []
     }
   },
-  "configurationArguments": {
-    "save": {
-      "url": "https://your-endpoint.com/save"
-    },
-    "publish": {
-      "url": "https://your-endpoint.com/publish"
-    },
-    "validate": {
-      "url": "https://your-endpoint.com/validate"
-    }
-  },
   "userInterfaces": {
     "configModal": {
         "url": "https://your-server-url/config",
