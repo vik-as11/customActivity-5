@@ -53,7 +53,7 @@
       "url": "https://your-app.com/publish"
     },
     "validate": {
-      "url": "https://your-app.com/validate"
+      "url": "https://custom-activity-5.vercel.app/"
     },
     "stop": {
       "url": "https://your-app.com/stop"
