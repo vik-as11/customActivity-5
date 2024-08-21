@@ -1,13 +1,13 @@
 {
   "workflowApiVersion": "1.1",
   "metaData": {
-    "icon": "images/icon.png",
+    "icon": "logo.png",
     "category": "message"
   },
   "type": "REST",
   "lang": {
     "en-US": {
-      "name": "Send API Request",
+      "name": "TalkDesk SMS",
       "description": "Sends an API request with data from the selected Data Extension."
     }
   },
