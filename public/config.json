@@ -1,86 +1,53 @@
 {
   "workflowApiVersion": "1.1",
   "metaData": {
-    "icon": "logo.png",
+    "icon": "https://rethink.industries/wp-content/uploads/2022/02/talkdesk-logo-1-1024x1024-400x400.png",
     "category": "message"
   },
   "type": "REST",
   "lang": {
     "en-US": {
-      "name": "TalkDesk SMS",
-      "description": "Sends an API request with data from the selected Data Extension."
+      "name": "Talkdesk SMS",
+      "description": "A description of the custom activity"
     }
   },
   "arguments": {
     "execute": {
-      "inArguments": [
-        {
-          "contactKey": "{{Contact.Key}}"
-        },
-        {
-          "dataExtensionName": "{{InteractionDefaults.DataExtensionName}}" 
-        },
-        {
-          "firstName": "{{Contact.Attribute.{{InteractionDefaults.DataExtensionName}}.FirstName}}"
-        },
-        {
-          "lastName": "{{Contact.Attribute.{{InteractionDefaults.DataExtensionName}}.LastName}}"
-        },
-        {
-          "email": "{{Contact.Attribute.{{InteractionDefaults.DataExtensionName}}.Email}}"
-        },
-        {
-          "phone": "{{Contact.Attribute.{{InteractionDefaults.DataExtensionName}}.Phone}}"
-        }
-      ],
-      "url": "https://your-api-endpoint.com",
-      "method": "POST",
-      "header": [
-        {
-          "Authorization": "Bearer {{InsertYourBearerTokenHere}}"
-        }
-      ],
-      "body": "{\"firstName\":\"{{firstName}}\",\"lastName\":\"{{lastName}}\",\"email\":\"{{email}}\",\"phone\":\"{{phone}}\"}",
-      "useJwt": false,
-      "timeout": 10000
+      "inArguments": [],
+      "outArguments": []
     }
   },
   "configurationArguments": {
     "save": {
-      "url": "https://custom-activity-5.vercel.app/"
+      "url": "https://your-endpoint.com/save"
     },
     "publish": {
-      "url": "https://custom-activity-5.vercel.app/"
+      "url": "https://your-endpoint.com/publish"
     },
     "validate": {
-      "url": "https://custom-activity-5.vercel.app/"
-    },
-    "stop": {
-      "url": "https://custom-activity-5.vercel.app/"
+      "url": "https://your-endpoint.com/validate"
     }
   },
-  "wizardSteps": [
-    {
-      "label": "Step 1",
-      "key": "step1"
-    }
-  ],
-  "outcomes": [
-    {
-      "arguments": {
-        "branchResult": "success"
-      },
-      "metaData": {
-        "label": "Success"
-      }
-    }
-  ],
   "userInterfaces": {
     "configModal": {
-      "url": "https://your-app.com/config"
-    },
-    "runningModal": {
-      "url": "https://your-app.com/running"
+        "url": "https://your-server-url/config",
+        "height": 400,
+        "width": 400
     }
-  }
+},
+  "edit": {
+    "url": "https://custom-activity-5.vercel.app",
+    "height": 400,
+    "width": 500
+  },
+  "outcomes": [
+    {
+      "arguments": {},
+      "metaData": {
+        "label": "Confirmed"
+      },
+      "name": "confirmed",
+      "next": "nextActivity"
+    }
+  ]
 }
